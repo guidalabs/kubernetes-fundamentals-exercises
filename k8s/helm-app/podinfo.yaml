@@ -1,0 +1,10 @@
+replicaCount: 1
+logLevel: debug
+ui:
+  message: "Hello <YOUR_NAME>"
+serviceMonitor:
+  enabled: true
+ingress:
+  enabled: true
+  hosts: [ "<YOUR_NAME>.guida-poc1.app.guida.io" ]
+  path: /

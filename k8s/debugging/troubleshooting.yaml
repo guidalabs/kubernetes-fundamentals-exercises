@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello-world
+  name: hello-world
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - image: avthart/hello-app:2.0.1
+        name: hello-world
+        ports:
+        - name: web
+          containerPort: 8080
+        resources:
+          requests:
+            memory: "64Gi"
+            cpu: "100m"
+          limits:
+            memory: "128Gi"
+            cpu: "150m"
+        livenessProbe:
+          httpGet:
+            path: /healht
+            port: web
+          initialDelaySeconds: 10
+          periodSeconds: 5
