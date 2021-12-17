@@ -81,7 +81,7 @@ kubectl get events
 kubectl get pods
 ```
 
-# Healtcheck
+# Healthcheck
 
 Check health check:
 
