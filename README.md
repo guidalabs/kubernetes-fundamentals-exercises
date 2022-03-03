@@ -61,6 +61,7 @@ Next you will find the actual exercises with links, for the terminal find them u
 ## Networking
 
 * [DNS](k8s/dns/)
+* [Network Policies](k8s/network-policies/)
 
 ## Troubleshooting
 
