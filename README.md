@@ -67,6 +67,10 @@ Next you will find the actual exercises with links, for the terminal find them u
 
 * [Troubleshooting](k8s/debugging/)
 
+## Horizontal Pod Autoscaler
+
+* [Horizontal Pod Autoscaler](k8s/hpa/)
+
 ## Helm
 
 * [Deploy app using Helm](k8s/helm-app/)
