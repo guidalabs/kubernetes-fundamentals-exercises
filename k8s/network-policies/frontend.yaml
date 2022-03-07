@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: frontend
+  name: frontend
+spec:
+  containers:
+  - image: nginx
+    imagePullPolicy: Always
+    name: frontend
+    ports:
+    - containerPort: 80
+      protocol: TCP
