@@ -43,7 +43,7 @@ kubectl get service
 
 Ingress is the built‑in Kubernetes load‑balancing framework for HTTP traffic. With Ingress, you control the routing of external traffic. Ingress is the most useful if you want to expose multiple services under the same IP address, and these services all use the same L7 protocol (typically HTTP). You can get a lot of features out of the box (like SSL, Auth, Routing, etc) depending on the ingress implementation.
 
-Update `host` field in `hello-world-ingress.yaml` with `hello-yourname.guida-poc1.app.guida.io`
+Update `host` field in `hello-world-ingress.yaml` with `hello-yourname.<YOUR_DOMAIN>`
 
 ```bash
 kubectl apply -f hello-world-ingress.yaml
@@ -54,12 +54,12 @@ kubectl apply -f hello-world-ingress.yaml
 With CURL:
 
 ```bash
-curl hello-yourname.guida-poc1.app.guida.io/api
+curl hello-yourname.<YOUR_DOMAIN>/api
 ```
 
 Or in browser:
 
-<http://hello-yourname.guida-poc1.app.guida.io>
+<http://hello-yourname.<YOUR_DOMAIN>>
 
 You should see the pod name and version of the app.
 
@@ -86,19 +86,19 @@ kubectl get pods
 Check health check:
 
 ```bash
-curl hello-yourname.guida-poc1.app.guida.io/health
+curl hello-yourname.<YOUR_DOMAIN>/health
 ```
 
 Marks server as down:
 
 ```bash
-curl -X POST hello-yourname.guida-poc1.app.guida.io/down
+curl -X POST hello-yourname.<YOUR_DOMAIN>/down
 ```
 
 Check health check:
 
 ```bash
-curl hello-yourname.guida-poc1.app.guida.io/health
+curl hello-yourname.<YOUR_DOMAIN>/health
 ```
 
 Check that health check is failed:
@@ -136,7 +136,7 @@ kubectl describe pod hello-world
 Which version is running? Stil alive?
 
 ```bash
-curl hello-yourname.guida-poc1.app.guida.io/api
+curl hello-yourname.<YOUR_DOMAIN>/api
 ```
 
 Rollback App
@@ -166,7 +166,7 @@ kubectl rollout status deployments/hello-world
 Which version is running? Was there any downtime?
 
 ```bash
-curl hello-yourname.guida-poc1.app.guida.io/api
+curl hello-yourname.<YOUR_DOMAIN>/api
 ```
 
 # Scaling
@@ -188,7 +188,7 @@ kubectl get pods
 Check that request is handled by all instances:
 
 ```bash
-while sleep 0.5; do curl hello-yourname.guida-poc1.app.guida.io/api; done
+while sleep 0.5; do curl hello-yourname.<YOUR_DOMAIN>/api; done
 ```
 
 Stop with CONTROL-C
