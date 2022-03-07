@@ -15,6 +15,10 @@ kubectl get pods,svc
 
 Now that the server is running, you will create an autoscaler that will scale between 1 and 5 replicas of the Pod depending on the CPU Utilisation. The Deployment will scale when the CPU utilization of the Pod hits 50%.
 
+```
+kubectl apply -f hpa.yaml
+```
+
 Confirm that the HPA is deployed
 ```
 kubectl get hpa
