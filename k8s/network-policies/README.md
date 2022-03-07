@@ -59,3 +59,10 @@ Bonus: find a partner that is also working on this exercise and create networkpo
 ```
 
 When you are validating the connectivity keep in mind that a service in another namespace can be reached as follows: \<SERVICE_NAME\>.\<NAMESPACE\>
+
+Cleanup resources
+```
+kubectl delete pods --all
+kubectl delete svc --all
+kubectl delete netpol --all
+```
