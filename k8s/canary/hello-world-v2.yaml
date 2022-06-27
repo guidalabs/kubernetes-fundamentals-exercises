@@ -5,9 +5,6 @@ metadata:
     app: hello-world-v2
   name: hello-world-v2
 spec:
-  securityContext:
-    runAsNonRoot: true
-    runAsUser: 1000
   replicas: 1
   selector:
     matchLabels:
@@ -21,6 +18,9 @@ spec:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '8080'  
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
       containers:
       - image: avthart/hello-app:2.0.0
         name: hello-world-v2
