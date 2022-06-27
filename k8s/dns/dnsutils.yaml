@@ -3,6 +3,9 @@ kind: Pod
 metadata:
   name: dnsutils
 spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
   containers:
   - name: dnsutils
     image: gcr.io/kubernetes-e2e-test-images/dnsutils:1.3

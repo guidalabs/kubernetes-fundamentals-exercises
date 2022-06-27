@@ -5,6 +5,9 @@ metadata:
     app: hello-world-service-v2
   name: hello-world-service-v2
 spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
   ports:
   - name: web
     port: 8080

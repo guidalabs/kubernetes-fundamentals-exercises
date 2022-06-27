@@ -15,8 +15,11 @@ spec:
         app: hello-world
       #annotations:
       #  prometheus.io/scrape: 'true'
-      #  prometheus.io/port: '8080'  
+      #  prometheus.io/port: '8080'
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
       containers:
       - image: avthart/hello-app:1.0.0
         name: hello-world

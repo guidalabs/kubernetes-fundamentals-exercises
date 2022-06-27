@@ -5,6 +5,9 @@ metadata:
     app: hello-world
   name: hello-world
 spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
   replicas: 1
   selector:
     matchLabels:

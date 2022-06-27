@@ -5,6 +5,9 @@ metadata:
     app: hello-world-green
   name: hello-world-green
 spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
   replicas: 1
   selector:
     matchLabels:
@@ -15,7 +18,7 @@ spec:
         app: hello-world-green
       annotations:
         prometheus.io/scrape: 'true'
-        prometheus.io/port: '8080'  
+        prometheus.io/port: '8080'
     spec:
       containers:
       - image: avthart/hello-app:2.0.0

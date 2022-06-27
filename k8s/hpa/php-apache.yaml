@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: php-apache
 spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
   selector:
     matchLabels:
       run: php-apache

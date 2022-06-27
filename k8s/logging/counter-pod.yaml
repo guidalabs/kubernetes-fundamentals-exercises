@@ -3,6 +3,9 @@ kind: Pod
 metadata:
   name: counter
 spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
   containers:
   - name: count
     image: busybox

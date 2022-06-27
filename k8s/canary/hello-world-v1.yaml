@@ -38,6 +38,9 @@ metadata:
     app: hello-world-v1
   name: hello-world-v1
 spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
   replicas: 3
   selector:
     matchLabels:

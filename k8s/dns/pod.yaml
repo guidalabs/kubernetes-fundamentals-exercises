@@ -5,6 +5,9 @@ metadata:
   labels:
     app: hello
 spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
   containers:
   - name: hello
     image: avthart/hello-app:1.0.0
