@@ -4,6 +4,9 @@ kind: Pod
 metadata:
   name: redis
 spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
   containers:
   - name: redis
     image: redis
