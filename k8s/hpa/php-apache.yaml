@@ -12,9 +12,6 @@ spec:
       labels:
         run: php-apache
     spec:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
       containers:
       - name: php-apache
         image: k8s.gcr.io/hpa-example
