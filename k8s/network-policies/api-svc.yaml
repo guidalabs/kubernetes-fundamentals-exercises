@@ -6,9 +6,9 @@ metadata:
   name: api
 spec:
   ports:
-  - port: 8080
+  - port: 9898
     protocol: TCP
-    targetPort: 8080
+    targetPort: 9898
   selector:
     app: api
   type: ClusterIP

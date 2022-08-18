@@ -21,8 +21,8 @@ kubectl get pod,svc
 By default, Kubernetes doesn't implement any networkpolicies so validate that the pods are able to communicate.
 
 ```bash
-kubectl exec -it frontend -- curl api
-kubectl exec -it api -- curl frontend
+kubectl exec -it frontend -- curl api:9898
+kubectl exec -it api -- curl frontend:9898
 ```
 
 Now implement a default deny ingress and egress policy.
@@ -35,7 +35,7 @@ kubectl get netpol
 Validate if the networkpolicies are working by trying to connect to the Frontend pod to the Api pod.
 
 ```bash
-kubectl exec -it frontend -- curl api
+kubectl exec -it frontend -- curl api:9898
 ```
 
 Deploy a network policy that will allow egress traffic from the Frontend pod to the API pod.
