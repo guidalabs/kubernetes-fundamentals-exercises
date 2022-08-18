@@ -5,6 +5,9 @@ metadata:
     app: frontend
   name: frontend
 spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
   containers:
   - image: ghcr.io/stefanprodan/podinfo:6.1.6
     imagePullPolicy: Always
