@@ -1,4 +1,4 @@
-# Config Maps
+# Secrets
 
 Kubernetes Secrets let you store and manage sensitive information, such as passwords, OAuth tokens, and ssh keys. Storing confidential information in a Secret is safer and more flexible than putting it verbatim in a Pod definition or in a container image.
 
