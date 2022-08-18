@@ -13,7 +13,7 @@ kubectl get pod,svc
 Try to use DNS to request api with `hello` pod using service `hello-service`.
 
 ```bash
-kubectl run dns-test --rm -it --image=busybox --restart=Never -- wget --timeout=5 -O- http://hello-service:8080/api
+kubectl run dns-test --rm -it --image=busybox --restart=Never --overrides='{  "spec": { "securityContext": { "runAsNonRoot": true, "runAsUser": 1000 }}}' -- wget --timeout=5 -O- http://hello-service:8080/api
 ```
 
 To access a service that is deployed in a different namespace than the one you’re accessing it from, use a FQDN in the form `$SVC.$NAMESPACE.svc.cluster.local`.
