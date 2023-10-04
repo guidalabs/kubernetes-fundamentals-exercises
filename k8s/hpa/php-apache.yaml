@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -13,26 +14,26 @@ spec:
         run: php-apache
     spec:
       containers:
-      - name: php-apache
-        image: k8s.gcr.io/hpa-example
-        ports:
-        - containerPort: 80
-        resources:
-          limits:
-            cpu: 500m
-          requests:
-            cpu: 200m
-        securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-              - ALL
-          readOnlyRootFilesystem: false
-          runAsNonRoot: true
-          runAsUser: 33
-          runAsGroup: 33
-          seccompProfile:
-            type: RuntimeDefault
+        - name: php-apache
+          image: k8s.gcr.io/hpa-example
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 200m
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            runAsUser: 33
+            runAsGroup: 33
+            seccompProfile:
+              type: RuntimeDefault
 ---
 apiVersion: v1
 kind: Service
@@ -42,6 +43,6 @@ metadata:
     run: php-apache
 spec:
   ports:
-  - port: 80
+    - port: 80
   selector:
     run: php-apache

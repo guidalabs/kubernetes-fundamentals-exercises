@@ -1,3 +1,4 @@
+---
 replicaCount: 1
 logLevel: debug
 ui:
@@ -29,6 +30,6 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
   tls:
-   - secretName: podinfo-tls
-     hosts:
-       - <YOUR_NAME>.<YOUR_DOMAIN>
+    - secretName: podinfo-tls
+      hosts:
+        - <YOUR_NAME>.<YOUR_DOMAIN>

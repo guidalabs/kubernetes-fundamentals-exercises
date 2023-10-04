@@ -5,22 +5,22 @@ metadata:
   name: redis
 spec:
   containers:
-  - name: redis
-    image: redis
-    volumeMounts:
-    - name: redis-storage
-      mountPath: /data/redis
-    securityContext:
-      allowPrivilegeEscalation: false
-      capabilities:
-        drop:
-          - ALL
-      readOnlyRootFilesystem: true
-      runAsNonRoot: true
-      runAsUser: 999
-      runAsGroup: 999
-      seccompProfile:
-        type: RuntimeDefault
+    - name: redis
+      image: redis
+      volumeMounts:
+        - name: redis-storage
+          mountPath: /data/redis
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 999
+        runAsGroup: 999
+        seccompProfile:
+          type: RuntimeDefault
   volumes:
-  - name: redis-storage
-    emptyDir: {}
+    - name: redis-storage
+      emptyDir: {}

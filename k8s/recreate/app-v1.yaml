@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -6,10 +7,10 @@ metadata:
   name: hello-world-service
 spec:
   ports:
-  - name: web
-    port: 8080
-    protocol: TCP
-    targetPort: 8080
+    - name: web
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
   selector:
     app: hello-world
 ---
@@ -21,15 +22,15 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - http:
-      paths:
-      - path: /
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: hello-world-service
-            port:
-              number: 8080
+    - http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: hello-world-service
+                port:
+                  number: 8080
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -50,35 +51,35 @@ spec:
         app: hello-world
       annotations:
         prometheus.io/scrape: 'true'
-        prometheus.io/port: '8080'  
+        prometheus.io/port: '8080'
     spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
       containers:
-      - image: avthart/hello-app:1.0.0
-        name: hello-world
-        ports:
-        - name: web
-          containerPort: 8080
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "100m"
-          limits:
-            memory: "128Mi"
-            cpu: "150m"
-        # liveness probes to know when to restart a Container.
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: web
-          initialDelaySeconds: 10
-          periodSeconds: 5
-        # readiness probes to know when a Container is ready to start accepting traffic.
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: web
-          initialDelaySeconds: 10
-          periodSeconds: 5
+        - image: avthart/hello-app:1.0.0
+          name: hello-world
+          ports:
+            - name: web
+              containerPort: 8080
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "150m"
+          # liveness probes to know when to restart a Container.
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: web
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          # readiness probes to know when a Container is ready to start accepting traffic.
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: web
+            initialDelaySeconds: 10
+            periodSeconds: 5
