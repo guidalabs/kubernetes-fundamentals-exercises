@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,32 +19,32 @@ spec:
         runAsNonRoot: true
         runAsUser: 1000
       containers:
-      - image: avthart/hello-app:2.0.1
-        name: hello-world
-        ports:
-        - name: web
-          containerPort: 8080
-        resources:
-          requests:
-            memory: "64Gi"
-            cpu: "100m"
-          limits:
-            memory: "128Gi"
-            cpu: "150m"
-        livenessProbe:
-          httpGet:
-            path: /healht
-            port: web
-          initialDelaySeconds: 10
-          periodSeconds: 5
-        securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-              - ALL
-          readOnlyRootFilesystem: true
-          runAsNonRoot: true
-          runAsUser: 1000
-          runAsGroup: 1000
-          seccompProfile:
-            type: RuntimeDefault
+        - image: avthart/hello-app:2.0.1
+          name: hello-world
+          ports:
+            - name: web
+              containerPort: 8080
+          resources:
+            requests:
+              memory: "64Gi"
+              cpu: "100m"
+            limits:
+              memory: "128Gi"
+              cpu: "150m"
+          livenessProbe:
+            httpGet:
+              path: /healht
+              port: web
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            seccompProfile:
+              type: RuntimeDefault
