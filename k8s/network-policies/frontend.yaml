@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: Pod
 metadata:
@@ -9,20 +10,20 @@ spec:
     runAsNonRoot: true
     runAsUser: 1000
   containers:
-  - image: ghcr.io/stefanprodan/podinfo:6.1.6
-    imagePullPolicy: Always
-    name: frontend
-    ports:
-    - containerPort: 9898
-      protocol: TCP
-    securityContext:
-      allowPrivilegeEscalation: false
-      capabilities:
-        drop:
-          - ALL
-      readOnlyRootFilesystem: true
-      runAsNonRoot: true
-      runAsUser: 1000
-      runAsGroup: 1000
-      seccompProfile:
-        type: RuntimeDefault
+    - image: ghcr.io/stefanprodan/podinfo:6.1.6
+      imagePullPolicy: Always
+      name: frontend
+      ports:
+        - containerPort: 9898
+          protocol: TCP
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault

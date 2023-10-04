@@ -14,11 +14,11 @@ metadata:
 spec:
   podSelector: {}
   policyTypes:
-  - Egress
+    - Egress
   egress:
-  - to:
-    ports:
-    - protocol: TCP
-      port: 53
-    - protocol: UDP
-      port: 53
+    - to:
+      ports:
+        - protocol: TCP
+          port: 53
+        - protocol: UDP
+          port: 53
