@@ -25,7 +25,7 @@ By default, kubectl looks for a file named config in the $HOME/.kube directory. 
 ```
 kubectl version
 ```
-Note, backend and client versionn, backend version implies you have a connection.
+Note, backend and client version, backend version implies you have a connection.
 ```
 kubectl get pods -n <NAMESPACE>
 ```
@@ -34,7 +34,7 @@ kubectl get pods -n <NAMESPACE>
 kubectl config set-context --current --namespace=<NAMESPACE>
 ```
 
-## Start point Excercises
+## Start point exercises
 
 Now you are ready to do some κυβερνήτες !
 
@@ -46,7 +46,7 @@ Next you will find the actual exercises with links, for the terminal find them u
 
 ## Configuration
 
-* [Configmap](k8s/config-map/)
+* [Configmap](k8s/configmap/)
 
 * [Secrets](k8s/secrets/)
 
@@ -75,7 +75,7 @@ Next you will find the actual exercises with links, for the terminal find them u
 
 * [Deploy app using Helm](k8s/helm-app/)
 
-## Extra excersises
+## Extra exercises
 
 * [Install Wordpress using Helm](https://github.com/bitnami/charts/tree/master/bitnami/wordpress) - Hint: Enable ingress using vars `ingress.*` and set `service.type` to `ClusterIp`
 * Create an app deployment (e.g. nginx) from scratch  with a liveness probe, replicas, ingress, resource limits and configmap

@@ -29,22 +29,16 @@ kubectl exec -it redis -- /bin/bash
 Go to `/data/redis`, and then create a file:
 
 ```bash
-root@redis:/data# cd /data/redis/
-root@redis:/data/redis# echo Hello > test-file
+redis@redis:/data# cd /data/redis/
+redis@redis:/data/redis# echo Hello > test-file
+redis@redis:/data/redis# cat test-file
+Hello
 ```
 
-List the running processes:
+Kill the Redis process, the main process in Docker will always have PID 1:
 
 ```bash
-root@redis:/data/redis# apt-get update
-root@redis:/data/redis# apt-get install procps
-root@redis:/data/redis# ps aux
-```
-
-Kill the Redis process:
-
-```bash
-root@redis:/data/redis# kill <pid>
+redis@redis:/data/redis# kill 1
 ```
 
 In your original terminal, watch for changes to the Redis Pod. Eventually, you will see something like this:
@@ -67,9 +61,9 @@ kubectl exec -it redis -- /bin/bash
 In your shell, go to /data/redis, and verify that test-file is still there.
 
 ```bash
-root@redis:/data/redis# cd /data/redis/
-root@redis:/data/redis# ls
-test-file
+redis@redis:/data/redis# ls -l /data/redis/
+total 4
+-rw-r--r-- 1 redis redis 6 Oct  4 10:14 test-file
 ```
 
 ## Clean-up

@@ -27,7 +27,8 @@ kubectl get hpa
 Now increase the load on the PHP container by querying the service from another container. Do this from another terminal session.
 
 ```
-kubectl run -i --tty load-generator --rm --image=busybox --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://php-apache; done"
+kubectl apply -f loadgenerator.yaml
+kubectl exec -it loadgenerator -- /bin/sh -c "while sleep 0.01; do wget -qO- http://php-apache; done"
 ```
 
 From a new terminal session monitor the autoscaling status.
@@ -42,7 +43,7 @@ Within a moment the CPU target is reached and the application will start scaling
 kubectl get pods
 ```
 
-Stop generating load by typing \<CTRL\> in the Pod that runs Busybox. This pod will be removed automatically.
+Stop generating load by typing `ctrl+c` in the Pod that runs Busybox.
 
 Then validate that the load is decreasing and the deployment will start scaling down.
 
@@ -53,10 +54,6 @@ kubectl get hpa php-apache --watch
 Cleanup your resources:
 ```
 kubectl delete -f php-apache.yaml
+kubectl delete -f loadgenerator.yaml
 kubectl delete -f hpa.yaml
 ```
-
-
-
-
-

@@ -9,30 +9,23 @@ From Homebrew (macOS):
 ```bash
 brew install helm
 ```
+(docs)[https://helm.sh/docs/intro/install/#from-homebrew-macos]
 
 From Chocolatey (Windows):
 
 ```bash
 choco install kubernetes-helm
 ```
+(docs)[https://helm.sh/docs/intro/install/#from-chocolatey-windows]
 
-From Apt (Debian/Ubuntu):
-
-```bash
-curl https://helm.baltorepo.com/organization/signing.asc | sudo apt-key add -
-sudo apt-get install apt-transport-https --yes
-echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
-sudo apt-get update
-sudo apt-get install helm
+From Scoop (Windows):
 ```
-
-Or using script:
-
-```bash
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-chmod 700 get_helm.sh
-./get_helm.sh
+scoop install helm
 ```
+(docs)[https://helm.sh/docs/intro/install/#from-scoop-windows]
+
+For other (supported) OSes see the documentation
+(https://helm.sh/docs/intro/install/#from-apt-debianubuntu)[https://helm.sh/docs/intro/install/#from-apt-debianubuntu]
 
 ## Test
 

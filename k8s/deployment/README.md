@@ -13,6 +13,44 @@ Create app:
 kubectl apply -f hello-world.yaml
 ```
 
+As you can see this app isn't allowed on the cluster by our policy engine Kyverno.
+As seen in the message certain `securityContext` settings are required:
+```
+Error from server: error when creating "../deployment/hello-world.yaml": admission webhook "validate.kyverno.svc-fail" denied the request:
+
+resource Deployment/playground/hello-world was blocked due to the following policies
+
+disallow-capabilities-strict:
+  autogen-require-drop-all: 'validation failure: Containers must drop `ALL` capabilities.'
+disallow-privilege-escalation:
+  autogen-privilege-escalation: 'validation error: Privilege escalation is disallowed.
+    The fields spec.containers[*].securityContext.allowPrivilegeEscalation, spec.initContainers[*].securityContext.allowPrivilegeEscalation,
+    and spec.ephemeralContainers[*].securityContext.allowPrivilegeEscalation must
+    be set to `false`. rule autogen-privilege-escalation failed at path /spec/template/spec/containers/0/securityContext/'
+require-run-as-nonroot:
+  autogen-run-as-non-root: 'validation error: Running as root is not allowed. Either
+    the field spec.securityContext.runAsNonRoot must be set to `true`, or the fields
+    spec.containers[*].securityContext.runAsNonRoot, spec.initContainers[*].securityContext.runAsNonRoot,
+    and spec.ephemeralContainers[*].securityContext.runAsNonRoot must be set to `true`.
+    rule autogen-run-as-non-root[0] failed at path /spec/template/spec/securityContext/runAsNonRoot/
+    rule autogen-run-as-non-root[1] failed at path /spec/template/spec/containers/0/securityContext/'
+restrict-seccomp-strict:
+  autogen-check-seccomp-strict: 'validation error: Use of custom Seccomp profiles
+    is disallowed. The fields spec.securityContext.seccompProfile.type, spec.containers[*].securityContext.seccompProfile.type,
+    spec.initContainers[*].securityContext.seccompProfile.type, and spec.ephemeralContainers[*].securityContext.seccompProfile.type
+    must be set to `RuntimeDefault` or `Localhost`. rule autogen-check-seccomp-strict[0]
+    failed at path /spec/template/spec/securityContext/seccompProfile/ rule autogen-check-seccomp-strict[1]
+    failed at path /spec/template/spec/containers/0/securityContext/'
+```
+
+So lets try again with a secured deployment (see the added `securityContext` in `hello-world-secure.yaml`):
+
+```bash
+kubectl apply -f hello-world-secure.yaml
+```
+
+Watch it being created:
+
 ```bash
 kubectl rollout status deployment hello-world -w
 ```
@@ -68,7 +106,7 @@ You should see the pod name and version of the app.
 Stop pod:
 
 ```bash
-kubectl delete pod hello-world
+kubectl delete pod -l app=hello-world
 ```
 
 See what happened and if a new pod is started:
@@ -116,7 +154,7 @@ kubectl get pods -o wide
 Update App to use new version
 
 ```bash
-kubectl set image --record deployments/hello-world hello-world=avthart/hello-app:1.0.1
+kubectl set image deployments/hello-world hello-world=avthart/hello-app:1.0.1
 ```
 
 Roll out status
@@ -156,7 +194,7 @@ kubectl rollout undo deployments/hello-world
 Update to working version:
 
 ```bash
-kubectl set image --record deployments/hello-world hello-world=avthart/hello-app:1.0.3
+kubectl set image deployments/hello-world hello-world=avthart/hello-app:1.0.3
 ```
 
 ```bash
