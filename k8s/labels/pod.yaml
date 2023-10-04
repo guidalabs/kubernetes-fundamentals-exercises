@@ -5,13 +5,21 @@ metadata:
   labels:
     env: development
 spec:
-  securityContext:
-    runAsNonRoot: true
-    runAsUser: 1000
   containers:
   - image: avthart/hello-app:2.0.1
     name: hello-world
     ports:
     - name: web
       containerPort: 8080
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 1000
+      seccompProfile:
+        type: RuntimeDefault
   restartPolicy: Never

@@ -22,6 +22,17 @@ spec:
             cpu: 500m
           requests:
             cpu: 200m
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+          readOnlyRootFilesystem: false
+          runAsNonRoot: true
+          runAsUser: 33
+          runAsGroup: 33
+          seccompProfile:
+            type: RuntimeDefault
 ---
 apiVersion: v1
 kind: Service

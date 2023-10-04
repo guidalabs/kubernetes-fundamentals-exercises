@@ -1,6 +1,6 @@
 # Config Maps
 
-ConfigMaps allow you to decouple configuration artifacts from image content to keep containerized applications portable. 
+ConfigMaps allow you to decouple configuration artifacts from image content to keep containerized applications portable.
 
 ## Define a container environment variable with data from a single ConfigMap
 

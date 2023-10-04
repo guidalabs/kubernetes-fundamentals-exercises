@@ -9,10 +9,21 @@ spec:
   containers:
     - name: test-container
       image: k8s.gcr.io/busybox
-      command: [ "/bin/sh", "-c", "ls /etc/config/" ]
+      command: [ "/bin/sh", "-c", "ls /etc/config/ && cat /etc/config/DB_URL" ]
       volumeMounts:
       - name: config-volume
         mountPath: /etc/config
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
   volumes:
     - name: config-volume
       configMap:

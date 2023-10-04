@@ -1,17 +1,11 @@
 # Deploy app via Helm
 
-Add helm repository:
-
-```bash
-helm repo add podinfo https://stefanprodan.github.io/podinfo
-```
-
 Update `podinfo.yaml` with your name and domain (replace \<YOUR_NAME\> on line 4 & 9).
 
 Install pod info app:
 
 ```bash
-helm upgrade -i podinfo podinfo/podinfo -f podinfo.yaml
+helm upgrade --install podinfo --values podinfo.yaml oci://ghcr.io/stefanprodan/charts/podinfo
 ```
 
 See pod info resources:

@@ -4,7 +4,7 @@ The [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) command li
 
 ## Install
 
-<https://kubernetes.io/docs/tasks/tools/install-kubectl/>
+[https://kubernetes.io/docs/tasks/tools/install-kubectl/](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ## Test (can be done later when configured the .kube fike)
 
