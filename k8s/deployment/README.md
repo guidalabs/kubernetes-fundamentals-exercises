@@ -232,7 +232,7 @@ Check that request is handled by all instances:
 while sleep 0.5; do curl hello-yourname.<YOUR_DOMAIN>/api; done
 ```
 ```powershell
-while (<condition>){ curl hello-yourname.<YOUR_DOMAIN>/api }
+while (Start-Sleep -Milliseconds 500) { curl hello-yourname.<YOUR_DOMAIN>/api }
 ```
 
 Stop with CONTROL-C

@@ -15,7 +15,7 @@ kubectl  apply -f hello-world-v1.yaml
 Get IP address:
 
 ```bash
-export IP_ADDRESS=`kubectl -n ingress-nginx get svc nginx-ingress-controller -o json | jq -r '.status.loadBalancer.ingress[0].ip'` 
+export IP_ADDRESS=`kubectl -n ingress-nginx get svc nginx-ingress-controller -o json | jq -r '.status.loadBalancer.ingress[0].ip'`
 ```
 
 Test:
@@ -38,6 +38,9 @@ Check that requests are handled by v1 and v2
 
 ```
 while sleep 0.5; do curl $IP_ADDRESS/api; done
+```
+```powershell
+while (Start-Sleep -Milliseconds 500) { curl hello-yourname.<YOUR_DOMAIN>/api }
 ```
 
 Stop with CONTROL-C
