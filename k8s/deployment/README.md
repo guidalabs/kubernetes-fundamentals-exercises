@@ -132,6 +132,9 @@ Marks server as down:
 ```bash
 curl -X POST hello-yourname.<YOUR_DOMAIN>/down
 ```
+```powershell
+Invoke-WebRequest -Urihello-yourname.<YOUR_DOMAIN>/down -Method POST
+```
 
 Check health check:
 
