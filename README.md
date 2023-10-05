@@ -67,6 +67,10 @@ Next you will find the actual exercises with links, for the terminal find them u
 
 * [Troubleshooting](k8s/debugging/)
 
+## Cronjob
+
+* [Cronjob](k8s/cronjob/)
+
 ## Horizontal Pod Autoscaler
 
 * [Horizontal Pod Autoscaler](k8s/hpa/)
