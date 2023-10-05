@@ -133,7 +133,7 @@ Marks server as down:
 curl -X POST hello-yourname.<YOUR_DOMAIN>/down
 ```
 ```powershell
-Invoke-WebRequest -Urihello-yourname.<YOUR_DOMAIN>/down -Method POST
+Invoke-WebRequest -Uri http://hello-yourname.<YOUR_DOMAIN>/down -Method POST
 ```
 
 Check health check:
@@ -230,6 +230,9 @@ Check that request is handled by all instances:
 
 ```bash
 while sleep 0.5; do curl hello-yourname.<YOUR_DOMAIN>/api; done
+```
+```powershell
+while (<condition>){ curl hello-yourname.<YOUR_DOMAIN>/api }
 ```
 
 Stop with CONTROL-C
