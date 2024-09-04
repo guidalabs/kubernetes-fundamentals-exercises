@@ -87,6 +87,25 @@ Update `host` field in `hello-world-ingress.yaml` with `hello-yourname.<YOUR_DOM
 kubectl apply -f hello-world-ingress.yaml
 ```
 
+Try to access you application with CURL:
+
+```bash
+curl hello-yourname.<YOUR_DOMAIN>/api
+```
+This should NOT be working, because a default deny networkpolicies is deployed in your namespace. Inspect this networkpolicy with the following command:
+```bash
+kubectl get ciliumnetworkpolicy guida-default-deny -o yaml
+```
+
+## Create Networkpolicy
+
+To make your curl command work, you should deploy a networkpolicy that allows traffic from he ingress nginx controller to your pod.
+
+```bash
+kubectl apply -f network-policy.yaml
+```
+
+
 ## Test
 
 With CURL:
@@ -237,4 +256,5 @@ Stop with CONTROL-C
 kubectl delete -f hello-world-ingress.yaml
 kubectl delete -f hello-world-service.yaml
 kubectl delete -f hello-world.yaml
+kubectl delete -f network-policy.yaml
 ```

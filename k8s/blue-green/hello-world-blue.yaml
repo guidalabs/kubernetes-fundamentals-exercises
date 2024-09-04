@@ -84,3 +84,14 @@ spec:
               port: web
             initialDelaySeconds: 10
             periodSeconds: 5
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: allow-ingress-nginx
+spec:
+  endpointSelector: {}
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: guida-ingress-nginx
