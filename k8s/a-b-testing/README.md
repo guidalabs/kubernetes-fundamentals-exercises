@@ -27,12 +27,18 @@ kubectl -n ab-v1 apply -f hello-world-v1.yaml
 kubectl -n ab-v1 apply -f hello-world-ingress.yaml
 ```
 
+## Create Networkpolicy
+
+```
+kubectl -n ab-v1 apply -f network-policy.yaml
+```
+
 ## Test
 
 Get IP address:
 
 ```bash
-export IP_ADDRESS=`kubectl -n ingress-nginx get svc nginx-ingress-controller -o json | jq -r '.status.loadBalancer.ingress[0].ip'` 
+export IP_ADDRESS=`kubectl -n ingress-nginx get svc nginx-ingress-controller -o json | jq -r '.status.loadBalancer.ingress[0].ip'`
 ```
 
 Test:
@@ -57,6 +63,11 @@ kubectl -n ab-v2 apply -f hello-world-v2.yaml
 ```
 kubectl -n ab-v2 apply -f hello-world-ingress-v2.yaml
 ```
+
+## Create Networkpolicy
+
+```
+kubectl -n ab-v2 apply -f network-policy.yaml
 
 ## Test
 
