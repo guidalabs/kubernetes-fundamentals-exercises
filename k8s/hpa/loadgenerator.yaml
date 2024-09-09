@@ -3,6 +3,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: loadgenerator
+  labels:
+    app: loadgenerator
 spec:
   securityContext:
     runAsNonRoot: true
@@ -26,3 +28,29 @@ spec:
         seccompProfile:
           type: RuntimeDefault
   restartPolicy: Always
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: allow-egress-loadgenerator-to-frontend
+spec:
+  endpointSelector:
+    matchLabels:
+      app: loadgenerator
+  egress:
+  - toEndpoints:
+      - matchLabels:
+          app: frontend
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: allow-ingress-frontend-from-loadgenerator
+spec:
+  endpointSelector:
+    matchLabels:
+      app: frontend
+  ingress:
+  - fromEndpoints:
+      - matchLabels:
+          app: loadgenerator
