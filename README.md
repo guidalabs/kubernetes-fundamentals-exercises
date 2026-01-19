@@ -84,15 +84,12 @@ Next you will find the actual exercises with links, for the terminal find them u
 * [Install Wordpress using Helm](https://github.com/bitnami/charts/tree/master/bitnami/wordpress) - Hint: Enable ingress using vars `ingress.*` and set `service.type` to `ClusterIp`
 * Create an app deployment (e.g. nginx) from scratch  with a liveness probe, replicas, ingress, resource limits and configmap
 
-## Katacoda
+## Extra Resources
 
-* [Network Introduction](https://www.katacoda.com/courses/kubernetes/networking-introduction)
-* [Storage Introduction](https://www.katacoda.com/courses/kubernetes/storage-introduction)
-* [Probes](https://www.katacoda.com/courses/kubernetes/liveness-readiness-healthchecks)
-* [Ingress Routing](https://www.katacoda.com/courses/kubernetes/create-kubernetes-ingress-routes)
-* [Helm](https://www.katacoda.com/courses/kubernetes/helm-package-manager)
-* [CKAD scenario](https://www.katacoda.com/courses/kubernetes/first-steps-to-ckad-certification)
-* [Docker Compose for Kubernetes](https://www.katacoda.com/courses/kubernetes/deploy-docker-compose-using-kompose)
+* [Helm](https://helm.sh/docs/intro/quickstart)
+* [Ingress Routing](https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress)
+* [Docker Compose for Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/)
+* [Killercoda Labs](https://killercoda.com/killer-shell-ckad)
 
 ## Unwind
 
