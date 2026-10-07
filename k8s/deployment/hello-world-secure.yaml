@@ -47,12 +47,12 @@ spec:
             httpGet:
               path: /health
               port: web
-            initialDelaySeconds: 10
             periodSeconds: 5
+            failureThreshold: 6
           # readiness probes to know when a Container is ready to start accepting traffic.
           readinessProbe:
             httpGet:
               path: /health
               port: web
-            initialDelaySeconds: 10
             periodSeconds: 5
+            failureThreshold: 3
