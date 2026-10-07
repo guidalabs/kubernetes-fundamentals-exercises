@@ -9,7 +9,7 @@ spec:
     runAsUser: 1000
   containers:
     - name: test-container
-      image: k8s.gcr.io/busybox
+      image: busybox
       command: ["/bin/sh", "-c", "ls /etc/config/ && cat /etc/config/DB_URL"]
       volumeMounts:
         - name: config-volume
