@@ -23,8 +23,8 @@ kubectl get pod,svc
 Validate that the pods are NOT able to communicate.
 
 ```bash
-kubectl exec -it frontend -- curl api:9898
-kubectl exec -it api -- curl frontend:9898
+kubectl exec -it frontend -- curl api:9898 --connect-timeout 1
+kubectl exec -it api -- curl frontend:9898 --connect-timeout 1
 ```
 
 Deploy a network policy that will allow egress traffic from the Frontend pod to the API pod.
@@ -47,7 +47,9 @@ When you are validating the connectivity keep in mind that a service in another 
 
 Cleanup resources
 ```
-kubectl delete pods --all
-kubectl delete svc --all
-kubectl delete ciliumnetworkpolicy --all
+kubectl delete -f frontend.yaml
+kubectl delete -f frontend-svc.yaml
+kubectl delete -f api.yaml
+kubectl delete -f api-svc.yaml
+kubectl delete -f allow-egress-frontend-to-api.yaml
 ```
