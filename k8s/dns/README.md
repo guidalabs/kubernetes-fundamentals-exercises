@@ -7,13 +7,14 @@ Let’s create a service named `hello-service` and a pod `hello`:
 ```bash
 kubectl apply -f pod.yaml
 kubectl apply -f svc.yaml
+kubectl apply -f netpol.yaml
 kubectl get pod,svc
 ```
 
 Try to use the Kubernetes DNS to request /api on the `hello` pod using service `hello-service`.
 ```
 kubectl apply -f dnsutils.yaml
-kubectl exec -i -t dnsutils -- wget -qO- http://hello-service:8080/api
+kubectl exec -i -t dnsutils -- wget -T 5 -qO- http://hello-service:8080/api
 ```
 
 To access a service that is deployed in a different namespace than the one you’re accessing it from, use a FQDN in the form `$SVC.$NAMESPACE.svc.cluster.local`.
@@ -34,4 +35,5 @@ Clean up:
 kubectl delete -f pod.yaml
 kubectl delete -f svc.yaml
 kubectl delete -f dnsutils.yaml
+kubectl delete -f netpol.yaml
 ```
