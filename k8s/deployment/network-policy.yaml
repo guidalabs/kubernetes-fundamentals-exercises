@@ -2,10 +2,10 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: allow-ingress-nginx
+  name: allow-gateway
 spec:
   endpointSelector: {}
   ingress:
     - fromEndpoints:
         - matchLabels:
-            io.kubernetes.pod.namespace: guida-ingress-nginx
+            io.kubernetes.pod.namespace: guida-gateway-training

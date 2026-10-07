@@ -77,14 +77,14 @@ kubectl apply -f hello-world-service.yaml
 kubectl get service
 ```
 
-## Create Ingress
+## Create HTTPRoute
 
-Ingress is the built‑in Kubernetes load‑balancing framework for HTTP traffic. With Ingress, you control the routing of external traffic. Ingress is the most useful if you want to expose multiple services under the same IP address, and these services all use the same L7 protocol (typically HTTP). You can get a lot of features out of the box (like SSL, Auth, Routing, etc) depending on the ingress implementation.
+HttpRoutes are the built‑in Kubernetes load‑balancing framework for HTTP traffic. With an HTTPRoute, you control the routing of external traffic. HTTPRoute is the most useful if you want to expose multiple services under the same IP address, and these services all use the same L7 protocol (typically HTTP, but can also be non-HTTP with Gateway API). You can get a lot of features out of the box (like SSL, Auth, Routing, etc) depending on the Gateway API implementation.
 
-Update `host` field in `hello-world-ingress.yaml` with `hello-yourname.<YOUR_DOMAIN>`
+Update `host` field in `hello-world-httproute.yaml` with `hello-yourname.<YOUR_DOMAIN>`
 
 ```bash
-kubectl apply -f hello-world-ingress.yaml
+kubectl apply -f hello-world-httproute.yaml
 ```
 
 Try to access you application with CURL:
@@ -99,7 +99,7 @@ kubectl get ciliumnetworkpolicy guida-default-deny -o yaml
 
 ## Create Networkpolicy
 
-To make your curl command work, you should deploy a networkpolicy that allows traffic from he ingress nginx controller to your pod.
+To make your curl command work, you should deploy a networkpolicy that allows traffic from the Gateway pod to your pod.
 
 ```bash
 kubectl apply -f network-policy.yaml
@@ -253,7 +253,7 @@ Stop with CONTROL-C
 # Clean up
 
 ```bash
-kubectl delete -f hello-world-ingress.yaml
+kubectl delete -f hello-world-httproute.yaml
 kubectl delete -f hello-world-service.yaml
 kubectl delete -f hello-world.yaml
 kubectl delete -f network-policy.yaml

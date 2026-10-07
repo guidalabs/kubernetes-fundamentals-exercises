@@ -40,7 +40,7 @@ Now you are ready to do some κυβερνήτες !
 
 Next you will find the actual exercises with links, for the terminal find them under the folder ./k8s/<xyz>/
 
-## Deployment, Service, Ingress
+## Deployment, Service, HTTPRoute
 
 * [Deployment](k8s/deployment/)
 
@@ -87,7 +87,7 @@ Next you will find the actual exercises with links, for the terminal find them u
 ## Extra Resources
 
 * [Helm](https://helm.sh/docs/intro/quickstart)
-* [Ingress Routing](https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress)
+* [Gateway API](https://gateway-api.sigs.k8s.io/docs/introduction/)
 * [Docker Compose for Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/)
 * [Killercoda Labs](https://killercoda.com/killer-shell-ckad)
 
