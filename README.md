@@ -84,6 +84,14 @@ Next you will find the actual exercises with links, for the terminal find them u
 * [Install Wordpress using Helm](https://github.com/bitnami/charts/tree/master/bitnami/wordpress) - Hint: Add a HTTPRoute using `extraDeploy` and set `service.type` to `ClusterIp`
 * Create an app deployment (e.g. nginx) from scratch  with a liveness probe, replicas, ingress, resource limits and configmap
 
+> [!WARNING]
+> The Wordpress excercise references the Bitnami catalog. This used to be the
+> goto source for curated images, and charts. However, [they
+> did](https://news.ycombinator.com/item?id=45048419) a
+> ["rugpull"](https://en.wikipedia.org/wiki/Exit_scam) a while ago, and the
+> whole community moved away from Bitnami. Don't use anything from them for
+> production usages.
+
 ## Extra Resources
 
 * [Helm](https://helm.sh/docs/intro/quickstart)
