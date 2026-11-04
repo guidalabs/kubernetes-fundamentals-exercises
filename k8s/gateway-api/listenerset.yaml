@@ -6,7 +6,7 @@ metadata:
 spec:
   parentRef:
     name: gateway
-    namespace: guida-gateway-training
+    namespace: guida-gateway-main
   listeners:
     - name: http
       protocol: HTTP
