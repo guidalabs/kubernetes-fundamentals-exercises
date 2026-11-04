@@ -3,6 +3,8 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: ListenerSet
 metadata:
   name: hello-world
+  annotations:
+    cert-manager.io/issuer: training
 spec:
   parentRef:
     name: gateway
@@ -11,7 +13,34 @@ spec:
     - name: http
       protocol: HTTP
       port: 80
-      hostname: <YOUR_NAME>.<YOUR_DOMAIN>
+      hostname: <YOUR_NAME>.<YOUR_DOMAIN> # edit
       allowedRoutes:
         namespaces:
           from: Same
+    - allowedRoutes:
+        namespaces:
+          from: Same
+      hostname: <YOUR_NAME>.<YOUR_DOMAIN> # edit
+      name: https
+      port: 443
+      protocol: HTTPS
+      tls:
+        certificateRefs:
+        - group: ""
+          kind: Secret
+          name: podinfo-training-tls
+        mode: Terminate
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: training
+spec:
+  acme:
+    email: platform+mdi-non-prod+training+<YOUR_NAME>@guida.nl # edit
+    privateKeySecretRef:
+      name: issuer-letsencrypt-training
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+    - http01:
+        gatewayHTTPRoute: {}

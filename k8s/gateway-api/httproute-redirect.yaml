@@ -4,6 +4,8 @@ kind: HTTPRoute
 metadata:
   name: hello-world-redirect
 spec:
+  hostnames:
+  - <YOUR_NAME>.<YOUR_DOMAIN> # edit
   parentRefs:
     - kind: ListenerSet
       name: hello-world
