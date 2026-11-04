@@ -8,4 +8,4 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            io.kubernetes.pod.namespace: guida-gateway-training
+            io.kubernetes.pod.namespace: guida-gateway-main
